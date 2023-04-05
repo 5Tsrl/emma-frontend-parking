@@ -26,11 +26,17 @@
 			@input="updateParking($event)"></b-form-select>
         </b-form-group>
       </b-col>
-
-		</b-form-row>
+	  <b-col>
+		<br>
+	  <b-button @click="showDismissibleAlert=true" variant="dark" class="btn m-1 " >
+      Consigli
+      </b-button>
+     </b-col>
+      </b-form-row>
+		
     </b-form>
-	<!-- <b-button v-b-modal.modal-1>Consigli</b-button> -->
-	<b-alert show variant="secondary">
+
+	<b-alert show variant="info" v-model="showDismissibleAlert" dismissible >
 		<h3 class="alert-heading" id="consigli"> Consigli</h3>
 		<p>
 	     - Dedica almeno il 5% dei posti al car pooling
@@ -46,7 +52,63 @@
          </p>
 		 <p>- Wallbox per auto elettriche</p>
 	</b-alert>
+    <br/>
 
+		<div class="d-flex justify-content-center">
+  <b-button v-b-toggle.collapse-1 variant="primary" class="mr-2"><b-icon class="mr-2" icon="cart-fill"></b-icon>Machina</b-button>
+  <b-button v-b-toggle.collapse-2 variant="primary" class="mr-2"><b-icon class="mr-2" icon="bicycle"></b-icon>Bicicleta</b-button>
+  <b-button v-b-toggle.collapse-3 variant="primary"><b-icon class="mr-2" icon="people-fill"></b-icon>Carpool</b-button>
+</div>
+<div>
+	<b-collapse id="collapse-1" class="mt-2">
+    <b-card>
+		<b-button variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button>
+      <h4 class="card-text">Machina Parking Managment</h4>
+	  <p>Liberi: 10</p>
+	  <p> Prenotabili: 20</p>
+      <b-button v-b-toggle.collapse-1-inner size="sm">Fututo</b-button>
+      <b-collapse id="collapse-1-inner" class="mt-2">
+        <b-card>
+			<p> Liberi: 10</p>
+			<p> Prenotabili: 20</p>
+		</b-card>
+      </b-collapse>
+    </b-card>
+  </b-collapse>
+ <b-collapse id="collapse-2" class="mt-2">
+    <b-card>
+		<b-button variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button>
+      <h4 class="card-text">Bicicleta Parking Managment</h4>
+		<p> Liberi: 30</p>
+		<p> Prenotabili: 40</p>
+	  <b-button v-b-toggle.collapse-2-inner size="sm">Futuro</b-button>
+      <b-collapse id="collapse-2-inner" class="mt-2">
+        <b-card>
+			<p> Liberi: 30</p>
+			<p> Prenotabili: 40</p>
+		</b-card>
+      </b-collapse>
+    </b-card>
+  </b-collapse>
+  <b-collapse id="collapse-3" class="mt-2">
+    <b-card>
+		<b-button variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button>
+      <h4 class="card-text">Carpool Parking Managment</h4>
+		<p> Liberi: 50</p>
+		<p> Prenotabili: 60</p>
+      <b-button v-b-toggle.collapse-3-inner size="sm">Futuro</b-button>
+      <b-collapse id="collapse-3-inner" class="mt-2">
+        <b-card>
+		<p> Liberi: 50</p>
+		<p> Prenotabili: 60</p>
+		</b-card>
+      </b-collapse>
+    </b-card>
+  </b-collapse>
+
+</div>
+
+	
         <table border="2" cellpadding="5" cellspacing="2" v-if="office_survey==null">
             <tr v-for="b in office_survey.survey.az_sosta_auto_nr">
                 <td v-for="a in 10">Posto {{ a*b }}</td>
@@ -75,6 +137,8 @@ export default {
 			companies: [],
 			offices_survey:[],
 			office_survey:[],
+			showDismissibleAlert: false,
+			showDismissibleCard: false,
 			
 		};
 	},
@@ -107,7 +171,9 @@ export default {
 					autoHideDelay: 2000,
 					appendToast: true,
 				});
+				
 			}
+			
 			return offices;
 		},
 	},
@@ -138,9 +204,6 @@ export default {
 		} catch (e) {
 			this.showError(e);
 		}
-		
-	
-
 
 	},
 
@@ -149,8 +212,6 @@ export default {
 
 <style>
 .alert-secondary {
-  color: #383d41;
   background-color: #012e45;
-  border-color: #d6d8db;
 }
 </style>
