@@ -118,10 +118,10 @@
  	 </b-row>
 	</br>
 	<table cellpadding="5" cellspacing="2" v-if="office_survey!=null">
-		<tr v-for="b in office_survey.survey.az_sosta_auto_nr">
-                <td v-for="a in 5"> <b-img                
+		<tr v-for="b in Math.round(parseInt(office_survey.survey.az_sosta_auto_nr)/13)">
+                <td v-for="a in 13"> <b-img                
                 :src="icons.png"
-                :alt="icons.name">
+                :alt="icons.name" v-b-tooltip.hover :title="a*b ">
 				</b-img> </td>
 				
             </tr>
@@ -165,7 +165,7 @@ export default {
 			icons: 	
 				{
 					name: "Car up view",
-					png: require("@/assets/img/carupview.png"),
+					png: require("@/assets/img/carupview2.png"),
 				},
 
 			
