@@ -54,7 +54,7 @@
 	</b-alert>
     <br/>
 
-		<div class="d-flex justify-content-center">
+		<div class="d-flex justify-content-center" v-if="office_survey.survey!=null">
   <b-button v-b-toggle.collapse-1 variant="primary" class="mr-2"><i
                 :class="`fa fa-car fa-1x`"
                 :style="`position:relative; left: -6px `">
@@ -62,13 +62,15 @@
   <b-button v-b-toggle.collapse-2 variant="primary" class="mr-2"><b-icon class="mr-2" icon="bicycle"></b-icon>Bicicleta</b-button>
   <b-button v-b-toggle.collapse-3 variant="primary"><b-icon class="mr-2" icon="people-fill"></b-icon>Carpool</b-button>
 </div>
-<div>
+<div v-if="office_survey.survey!=null">
 	<b-collapse id="collapse-1" class="mt-2">
-    <b-card>
+    <b-card v-if="office_survey.survey.az_sosta=='sì'">
 		<b-button v-b-modal.modal-1 variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button>
       <h4 class="card-text">Machina Parking Managment</h4>
-	  <p>Liberi: 0</p>
 	  <p> Prenotabili: {{ office_survey.survey.az_sosta_auto_nr }}</p>
+	  <p>Liberi: 0</p>
+	  <p v-if="office_survey.survey.az_sosta_visitatori=='sì'"> Prenotabili (visitatori/fornitori): {{ office_survey.survey.az_sosta_visitatori_nr }}</p>
+	  <p v-if="office_survey.survey.az_sosta_visitatori=='sì'">Liberi (visitatori/fornitori): 0</p>
       <b-button v-b-toggle.collapse-1-inner size="sm">Fututo</b-button>
       <b-collapse id="collapse-1-inner" class="mt-2">
         <b-card>
@@ -77,13 +79,18 @@
 		</b-card>
       </b-collapse>
     </b-card>
+	<b-card v-if="office_survey.survey.az_sosta=='no'">
+		<h4 class="card-text">Non ci sono Machina Parking</h4>
+	</b-card>
   </b-collapse>
  <b-collapse id="collapse-2" class="mt-2">
-    <b-card>
+    <b-card v-if="office_survey.survey.az_sosta_bici=='sì'">
 		<b-button variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button>
       <h4 class="card-text">Bicicleta Parking Managment</h4>
+	  	<p> Prenotabili:  {{ office_survey.survey.az_sosta_bici_nr }}</p>
 		<p> Liberi: 0</p>
-		<p> Prenotabili: 0</p>
+		<p> Prenotabili (eletriche):  {{ office_survey.survey.az_sosta_bici_el_nr }}</p>
+		<p> Liberi: 0</p>
 	  <b-button v-b-toggle.collapse-2-inner size="sm">Futuro</b-button>
       <b-collapse id="collapse-2-inner" class="mt-2">
         <b-card>
@@ -92,13 +99,16 @@
 		</b-card>
       </b-collapse>
     </b-card>
+	<b-card v-if="office_survey.survey.az_sosta_bici=='no'">
+		<h4 class="card-text">Non ci sono Bicicleta Parking</h4>
+	</b-card>
   </b-collapse>
   <b-collapse id="collapse-3" class="mt-2">
-    <b-card>
+    <b-card v-if="office_survey.survey.az_sosta_carpooling=='sì'">
 		<b-button variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button>
       <h4 class="card-text">Carpool Parking Managment</h4>
+		<p> Prenotabili:  {{ office_survey.survey.az_sosta_carpooling_nr }}</p>
 		<p> Liberi: 0</p>
-		<p> Prenotabili: 0</p>
       <b-button v-b-toggle.collapse-3-inner size="sm">Futuro</b-button>
       <b-collapse id="collapse-3-inner" class="mt-2">
         <b-card>
@@ -107,6 +117,9 @@
 		</b-card>
       </b-collapse>
     </b-card>
+	<b-card v-if="office_survey.survey.az_sosta_carpooling=='no'">
+		<h4 class="card-text">Non ci sono Carpool Parking</h4>
+	</b-card>
   </b-collapse>
 
 </div>
