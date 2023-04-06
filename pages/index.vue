@@ -55,14 +55,17 @@
     <br/>
 
 		<div class="d-flex justify-content-center">
-  <b-button v-b-toggle.collapse-1 variant="primary" class="mr-2"><b-icon class="mr-2" icon="cart-fill"></b-icon>Machina</b-button>
+  <b-button v-b-toggle.collapse-1 variant="primary" class="mr-2"><i
+                :class="`fa fa-car fa-1x`"
+                :style="`position:relative; left: -6px `">
+				</i>Machina</b-button>
   <b-button v-b-toggle.collapse-2 variant="primary" class="mr-2"><b-icon class="mr-2" icon="bicycle"></b-icon>Bicicleta</b-button>
   <b-button v-b-toggle.collapse-3 variant="primary"><b-icon class="mr-2" icon="people-fill"></b-icon>Carpool</b-button>
 </div>
 <div>
 	<b-collapse id="collapse-1" class="mt-2">
     <b-card>
-		<b-button variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button>
+		<b-button v-b-modal.modal-1 variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button>
       <h4 class="card-text">Machina Parking Managment</h4>
 	  <p>Liberi: 0</p>
 	  <p> Prenotabili: {{ office_survey.survey.az_sosta_auto_nr }}</p>
@@ -107,13 +110,29 @@
   </b-collapse>
 
 </div>
-
-	
-        <table border="2" cellpadding="5" cellspacing="2" v-if="office_survey!=null">
-            <tr v-for="b in office_survey.survey.az_sosta_auto_nr">
-                <td v-for="a in 10">Posto {{ a*b }}</td>
+<b-modal id="modal-1" title="Posti liberi">
+	<b-row  >
+		<b-col md="4"><b-icon class="mr-2" icon="circle-fill" variant="success"></b-icon>Posti disponibili</b-col>
+    	<b-col xl="5"><b-icon class="mr-2" icon="circle-fill" variant="danger"></b-icon>Posti non-disponibili</b-col>
+    	<b-col xl="3"><b-icon class="mr-2" icon="circle-fill" variant="info"></b-icon>Carpool</b-col>
+ 	 </b-row>
+	</br>
+	<table cellpadding="5" cellspacing="2" v-if="office_survey!=null">
+		<tr v-for="b in office_survey.survey.az_sosta_auto_nr">
+                <td v-for="a in 5"> <b-img                
+                :src="icons.png"
+                :alt="icons.name">
+				</b-img> </td>
+				
             </tr>
-        </table>        
+	
+            <!-- <tr v-for="b in office_survey.survey.az_sosta_auto_nr">
+                <td v-for="a in 5"> {{ a*b }}</td>
+            </tr> -->
+        </table>  
+  </b-modal>
+	
+               
     </div>
 </template>
 
@@ -143,6 +162,13 @@ export default {
 			},
 			showDismissibleAlert: false,
 			showDismissibleCard: false,
+			icons: 	
+				{
+					name: "Car up view",
+					png: require("@/assets/img/carupview.png"),
+				},
+
+			
 			
 		};
 	},
@@ -217,5 +243,11 @@ export default {
 <style>
 .alert-secondary {
   background-color: #012e45;
+},
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: green;
 }
 </style>
