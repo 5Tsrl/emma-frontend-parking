@@ -54,14 +54,14 @@
 	</b-alert>
     <br/>
 
-		<div class="d-flex justify-content-center" v-if="office_survey.survey!=null">
-  <b-button v-b-toggle.collapse-1 variant="primary" class="mr-2"><i
-                :class="`fa fa-car fa-1x`"
-                :style="`position:relative; left: -6px `">
-				</i>Machina</b-button>
-  <b-button v-b-toggle.collapse-2 variant="primary" class="mr-2"><b-icon class="mr-2" icon="bicycle"></b-icon>Bicicleta</b-button>
-  <b-button v-b-toggle.collapse-3 variant="primary"><b-icon class="mr-2" icon="people-fill"></b-icon>Carpool</b-button>
-</div>
+	<div class="d-flex justify-content-center" v-if="office_survey.survey!=null">
+		<b-button v-b-toggle.collapse-1 variant="primary" class="mr-2"><i :class="`fa fa-car fa-1x`" :style="`position:relative; left: -6px `"></i>Machina</b-button>
+		<b-button v-b-toggle.collapse-2 variant="primary" class="mr-2"><b-icon class="mr-2" icon="bicycle"></b-icon>Bicicleta</b-button>
+		<b-button v-b-toggle.collapse-3 variant="primary"><b-icon class="mr-2" icon="people-fill"></b-icon>Carpool</b-button>
+	</div>
+	<div class="d-flex justify-content-center" v-if="office_survey.survey==null">
+		<h4 class="card-text">Il questionario sede è vuoto</h4>
+	</div>
 <div v-if="office_survey.survey!=null">
 	<b-collapse id="collapse-1" class="mt-2">
     <b-card v-if="office_survey.survey.az_sosta=='sì'">
@@ -123,30 +123,35 @@
   </b-collapse>
 
 </div>
-<b-modal id="modal-1" title="Posti liberi">
-	<b-row  >
-		<b-col md="4"><b-icon class="mr-2" icon="circle-fill" variant="success"></b-icon>Posti disponibili</b-col>
-    	<b-col xl="5"><b-icon class="mr-2" icon="circle-fill" variant="danger"></b-icon>Posti non-disponibili</b-col>
-    	<b-col xl="3"><b-icon class="mr-2" icon="circle-fill" variant="info"></b-icon>Carpool</b-col>
- 	 </b-row>
-	</br>
-	<table cellpadding="5" cellspacing="2" v-if="office_survey!=null">
-		<tr v-for="b in Math.round(parseInt(office_survey.survey.az_sosta_auto_nr)/13)">
-                <td v-for="a in 13"> <b-img                
-                :src="icons.png"
-                :alt="icons.name" v-b-tooltip.hover :title="a*b ">
-				</b-img> </td>
-				
-            </tr>
-	
-            <!-- <tr v-for="b in office_survey.survey.az_sosta_auto_nr">
-                <td v-for="a in 5"> {{ a*b }}</td>
-            </tr> -->
-        </table>  
-  </b-modal>
-	
+<div v-if="office_survey.survey!=null">
+	<b-modal id="modal-1" title="Posti liberi">
+			<b-row  >
+				<b-col md="4"><b-icon class="mr-2" icon="circle-fill" variant="success"></b-icon>Posti disponibili</b-col>
+				<b-col xl="5"><b-icon class="mr-2" icon="circle-fill" variant="danger"></b-icon>Posti non-disponibili</b-col>
+				<b-col xl="3"><b-icon class="mr-2" icon="circle-fill" variant="info"></b-icon>Carpool</b-col>
+			</b-row>
+			<br>
+			<table cellpadding="5" cellspacing="2" v-if="office_survey.survey.az_sosta_auto_nr!=null">
+				<tr v-for="b in Math.round(parseInt(office_survey.survey.az_sosta_auto_nr)/13)">
+						<td v-for="a in 13"> <b-img                
+						:src="icons.png"
+						:alt="icons.name" v-b-tooltip.hover :title="a*b ">
+						</b-img> </td>
+						
+					</tr>
+			
+					<!-- <tr v-for="b in office_survey.survey.az_sosta_auto_nr">
+						<td v-for="a in 5"> {{ a*b }}</td>
+					</tr> -->
+				</table>  
+		</b-modal>
+</div>
+
                
     </div>
+	
+	
+	
 </template>
 
 <script>
