@@ -64,13 +64,13 @@
     <b-card>
 		<b-button variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button>
       <h4 class="card-text">Machina Parking Managment</h4>
-	  <p>Liberi: 10</p>
-	  <p> Prenotabili: 20</p>
+	  <p>Liberi: 0</p>
+	  <p> Prenotabili: {{ office_survey.survey.az_sosta_auto_nr }}</p>
       <b-button v-b-toggle.collapse-1-inner size="sm">Fututo</b-button>
       <b-collapse id="collapse-1-inner" class="mt-2">
         <b-card>
-			<p> Liberi: 10</p>
-			<p> Prenotabili: 20</p>
+			<p> Liberi: 0</p>
+			<p> Prenotabili: 0</p>
 		</b-card>
       </b-collapse>
     </b-card>
@@ -79,13 +79,13 @@
     <b-card>
 		<b-button variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button>
       <h4 class="card-text">Bicicleta Parking Managment</h4>
-		<p> Liberi: 30</p>
-		<p> Prenotabili: 40</p>
+		<p> Liberi: 0</p>
+		<p> Prenotabili: 0</p>
 	  <b-button v-b-toggle.collapse-2-inner size="sm">Futuro</b-button>
       <b-collapse id="collapse-2-inner" class="mt-2">
         <b-card>
-			<p> Liberi: 30</p>
-			<p> Prenotabili: 40</p>
+			<p> Liberi: 0</p>
+			<p> Prenotabili: 0</p>
 		</b-card>
       </b-collapse>
     </b-card>
@@ -94,13 +94,13 @@
     <b-card>
 		<b-button variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button>
       <h4 class="card-text">Carpool Parking Managment</h4>
-		<p> Liberi: 50</p>
-		<p> Prenotabili: 60</p>
+		<p> Liberi: 0</p>
+		<p> Prenotabili: 0</p>
       <b-button v-b-toggle.collapse-3-inner size="sm">Futuro</b-button>
       <b-collapse id="collapse-3-inner" class="mt-2">
         <b-card>
-		<p> Liberi: 50</p>
-		<p> Prenotabili: 60</p>
+		<p> Liberi: 0</p>
+		<p> Prenotabili: 0</p>
 		</b-card>
       </b-collapse>
     </b-card>
@@ -109,7 +109,7 @@
 </div>
 
 	
-        <table border="2" cellpadding="5" cellspacing="2" v-if="office_survey==null">
+        <table border="2" cellpadding="5" cellspacing="2" v-if="office_survey!=null">
             <tr v-for="b in office_survey.survey.az_sosta_auto_nr">
                 <td v-for="a in 10">Posto {{ a*b }}</td>
             </tr>
@@ -135,8 +135,12 @@ export default {
 			office_id: null,
 			offices: [],
 			companies: [],
-			offices_survey:[],
-			office_survey:[],
+			offices_survey:null,
+			office_survey:{
+				survey:{
+					az_sosta_auto_nr:0,
+				}
+			},
 			showDismissibleAlert: false,
 			showDismissibleCard: false,
 			
@@ -186,7 +190,7 @@ export default {
 		if (this.$route.query.office_id){
 			this.office_id = parseInt(this.$route.query.office_id);
 		}
-		this.office_survey.survey=null;
+		//this.office_survey.survey=null;
 		this.loading = true;
 		
 		try {
