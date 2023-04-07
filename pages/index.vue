@@ -1,5 +1,8 @@
 <template>
     <div>
+		<!-- <b-button @click="showDismissibleAlert=true" variant="dark" class="btn m-1 btn btn-primary float-right" >
+      Consigli
+      </b-button> -->
 		<h2>Gestione Posteggi</h2>
 		<b-form>
 		<b-form-row>
@@ -26,38 +29,31 @@
 			@input="updateParking($event)"></b-form-select>
         </b-form-group>
       </b-col>
-	  <b-col>
-		<br>
-	  <b-button @click="showDismissibleAlert=true" variant="dark" class="btn m-1 " >
-      Consigli
-      </b-button>
-     </b-col>
       </b-form-row>
 		
     </b-form>
-
-	<b-alert show variant="info" v-model="showDismissibleAlert" dismissible >
-		<h3 class="alert-heading" id="consigli"> Consigli</h3>
-		<p>
-	     - Dedica almeno il 5% dei posti al car pooling
-		</p>
-		<p>- Se il posteggio è esterno pensa ad alberare e depaving
-         </p>
-		 <p>
-			- Quanto occupa un posto bici (un’auto → 10 bici *citare la fonte)
-		 </p>
-		 <p>- Pensilina solare per i posteggi in esterno
-         </p>
-		 <p>- Inserisci un sistema di prenotazione
-         </p>
-		 <p>- Wallbox per auto elettriche</p>
-	</b-alert>
+	<div class="accordion" role="tablist">
+        <b-button block v-b-toggle.accordion-1 variant="light">Consigli</b-button>
+      <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
+		<br>
+			<p> - Dedica almeno il 5% dei posti al car pooling</p>
+			<p>- Se il posteggio è esterno pensa ad alberare e depaving</p>
+		    <p>- Quanto occupa un posto bici (un’auto → 10 bici *citare la fonte) </p>
+		    <p>- Pensilina solare per i posteggi in esterno</p>
+		    <p>- Inserisci un sistema di prenotazione</p>
+		    <p>- Wallbox per auto elettriche</p>
+        </b-card-body>
+      </b-collapse>
+	</div>
     <br/>
 
 	<div class="d-flex justify-content-center" v-if="office_survey.survey!=null">
 		<b-button v-b-toggle.collapse-1 variant="primary" class="mr-2"><i :class="`fa fa-car fa-1x`" :style="`position:relative; left: -6px `"></i>Machina</b-button>
 		<b-button v-b-toggle.collapse-2 variant="primary" class="mr-2"><b-icon class="mr-2" icon="bicycle"></b-icon>Bicicleta</b-button>
-		<b-button v-b-toggle.collapse-3 variant="primary"><b-icon class="mr-2" icon="people-fill"></b-icon>Carpool</b-button>
+		<b-button v-b-toggle.collapse-3 variant="primary"><b-img                
+						:src="icons.moto.png"
+						:alt="icons.moto.name">
+						</b-img> Motocicli</b-button>
 	</div>
 	<div class="d-flex justify-content-center" v-if="office_survey.survey==null">
 		<h4 class="card-text">Il questionario sede è vuoto</h4>
@@ -71,7 +67,12 @@
 	  <p>Liberi: 0</p>
 	  <p v-if="office_survey.survey.az_sosta_visitatori=='sì'"> Prenotabili (visitatori/fornitori): {{ office_survey.survey.az_sosta_visitatori_nr }}</p>
 	  <p v-if="office_survey.survey.az_sosta_visitatori=='sì'">Liberi (visitatori/fornitori): 0</p>
-      <b-button v-b-toggle.collapse-1-inner size="sm">Fututo</b-button>
+	  <h4>Carpool Parking Managment</h4>
+	  	<p v-if="office_survey.survey.az_sosta_carpooling=='sì'"> Prenotabili:  {{ office_survey.survey.az_sosta_carpooling_nr }}</p>
+		<p v-if="office_survey.survey.az_sosta_carpooling=='sì'"> Liberi: 0</p>
+		<p v-if="office_survey.survey.az_sosta_carpooling=='no'" class="card-text">Non ci sono Carpool Parking</p>
+
+      <b-button v-b-toggle.collapse-1-inner size="sm">Futuro</b-button>
       <b-collapse id="collapse-1-inner" class="mt-2">
         <b-card>
 			<p> Liberi: 0</p>
@@ -106,8 +107,8 @@
   <b-collapse id="collapse-3" class="mt-2">
     <b-card v-if="office_survey.survey.az_sosta_carpooling=='sì'">
 		<b-button variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button>
-      <h4 class="card-text">Carpool Parking Managment</h4>
-		<p> Prenotabili:  {{ office_survey.survey.az_sosta_carpooling_nr }}</p>
+      <h4 class="card-text">Motocicli Parking Managment</h4>
+		<p> Prenotabili:  {{ office_survey.survey.az_sosta_moto_nr }}</p>
 		<p> Liberi: 0</p>
       <b-button v-b-toggle.collapse-3-inner size="sm">Futuro</b-button>
       <b-collapse id="collapse-3-inner" class="mt-2">
@@ -117,8 +118,8 @@
 		</b-card>
       </b-collapse>
     </b-card>
-	<b-card v-if="office_survey.survey.az_sosta_carpooling=='no'">
-		<h4 class="card-text">Non ci sono Carpool Parking</h4>
+	<b-card v-if="office_survey.survey.az_sosta_moto=='no'">
+		<h4 class="card-text">Non ci sono Motocicli Parking</h4>
 	</b-card>
   </b-collapse>
 
@@ -134,16 +135,21 @@
 			<table cellpadding="5" cellspacing="2" v-if="office_survey.survey.az_sosta_auto_nr!=null">
 				<tr v-for="b in Math.round(parseInt(office_survey.survey.az_sosta_auto_nr)/13)">
 						<td v-for="a in 13"> <b-img                
-						:src="icons.png"
-						:alt="icons.name" v-b-tooltip.hover :title="a*b ">
+						:src="icons.car.png"
+						:alt="icons.car.name" v-b-tooltip.hover :title="a*b ">
 						</b-img> </td>
 						
 					</tr>
-			
-					<!-- <tr v-for="b in office_survey.survey.az_sosta_auto_nr">
-						<td v-for="a in 5"> {{ a*b }}</td>
-					</tr> -->
 				</table>  
+			<br>
+				<b-form-checkbox
+      				id="checkbox-1"
+     				 v-model="status"
+      				name="checkbox-1"
+      				value="accepted"
+      				unchecked-value="not_accepted">
+					La tua macchina è un carpool?
+    			</b-form-checkbox>
 		</b-modal>
 </div>
 
@@ -180,11 +186,20 @@ export default {
 			},
 			showDismissibleAlert: false,
 			showDismissibleCard: false,
-			icons: 	
-				{
+			icons:{
+				car:{
 					name: "Car up view",
 					png: require("@/assets/img/carupview2.png"),
 				},
+				moto:{
+					name: "Motocicli",
+					png: require("@/assets/img/motocicleta.png"),
+				},
+			}, 
+			activeConsigli: true,	
+				
+
+				
 
 			
 			
@@ -194,6 +209,10 @@ export default {
 	methods: {
 		nextTab(next) {
 			this.$router.push(`/bilancio/${next}`);
+		},
+		onTabChange(){
+			this.activeConsigli=false
+			//this.activeConsigli=!this.activeConsigli
 		},
 		async updateCompany() {
 			this.offices = await this.createOfficeList();
