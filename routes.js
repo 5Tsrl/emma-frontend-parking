@@ -9,7 +9,9 @@ const routes = [
 			{
 				path: "/parking",
 				name: "Gestione Posteggi",
-				meta: { authorize: ["admin"] },
+				meta: { 
+					authorize: ["admin", "moma","moma_area"] 
+				},
 				// lazy-loaded
 				component: pageComponent("index"),
 			},						
