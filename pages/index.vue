@@ -32,9 +32,6 @@
       </b-form-row>
 		
     </b-form>
-	<div class="accordion" role="tablist">
-        <b-button block  v-b-modal.modal-2 variant="light" :disabled="selected_office" >Aggiungi dati futuri</b-button>
-		<b-modal id="modal-2" title="Dati futuri" hide-footer v-if="office_survey.survey!=null">
 			
 				<b-card bg-variant="secondary" text-variant="white">	
 					<h5 class="mb-2">Consigli: </h5>
@@ -45,118 +42,7 @@
 					<p class="my-1">- Inserisci un sistema di prenotazione</p>
 					<p class="my-1">- Wallbox per auto elettriche</p>
 				</b-card>	
-				<b-tabs content-class="mt-3" align="center">
-					<b-tab title="Auto" active>
-						<b-form
-						label="Posti Liberi"
-						description="Inserisci il numero di parcheggi liberi per auto tradizionali">
-						<b-label for="input-form-auto-liberi">Posti Liberi:</b-label>
-							<b-form-input id="input-form-auto-liberi" type="number" v-model="office_survey.info_parking.az_sosta_auto_nr_liberi" :min="min" :max="max" :step="step" class="mb-2 mt-0">
-							</b-form-input>
-							<b-description class="font-weight-light"> Inserisci il numero di parcheggi liberi per auto tradizionali</b-description>
-						</b-form>
-							<br>
-						<b-form
-							label="Posti Prenotabili"
-							description="Inserisci il numero di parcheggi prenotabili per auto tradizionali">
-							<b-lable for="input-form-auto-prenotabili" class="mt-3">Posti Prenotabili:</b-lable>
-							<b-form-input id="input-form-auto-prenotabili" type="number" v-model="office_survey.info_parking.az_sosta_auto_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0">
-							</b-form-input>
-							<b-description class="font-weight-light"> Inserisci il numero di parcheggi prenotabili per auto tradizionali</b-description>
-						</b-form>
-							<br>
-						<b-form
-							label="Posti per Carpooling"
-							description="Inserisci il numero di parcheggi riservati al carpooling"></b-form>
-							<b-label for="input-form-auto-carpooling" class="mt-3">Posti per Carpooling:</b-label>
-							<b-form-input id="input-form-auto-carpooling" type="number" v-model="office_survey.info_parking.az_sosta_carpooling_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0">
-							</b-form-input>	
-							<b-description class="font-weight-light"> Inserisci il numero di parcheggi riservati al carpooling</b-description>
-							<br>
-						</b-form>
-							<br>
-						<b-form
-							label="Posti per Auto Elettriche"
-							description="Inserisci il numero di parcheggi riservati per auto elettriche (Wallbox)">
-							<b-label for="input-form-auto-elettriche" class="mt-3">Posti per Auto Elettriche:</b-label>
-							<b-form-input id="input-form-auto-elettriche" type="number" v-model="office_survey.info_parking.az_sosta_auto_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0">
-							</b-form-input>	
-							<b-description class="font-weight-light"> Inserisci il numero di parcheggi riservati per auto elettriche (Wallbox)</b-description>
-						</b-form>
-							<br>
-						<b-form
-							label="Posti per Visitatori/Fornitori"
-							description="Inserisci il numero di parcheggi per visitatori/fornitori">
-							<b-label for="input-form-auto-visitatori" class="mt-3">Posti per Visitatori/Fornitori:</b-label>
-							<b-form-input id="input-form-auto-visitatori" type="number" v-model="office_survey.info_parking.az_sosta_visitatori_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0">
-							</b-form-input>
-							<b-description class="font-weight-light"> Inserisci il numero di parcheggi per visitatori/fornitori</b-description>
-						</b-form>
-					</b-tab>
-
-					<b-tab title="Bicicletta">
-					<b-form
-						label="Posti Liberi"
-						description="Inserisci il numero di parcheggi per visitatori/fornitori">
-						<b-label for="input-form-bici-liberi" class="mt-3">Posti Liberi:</b-label>
-						<b-form-input id="input-form-bici-liberi" type="number" v-model="office_survey.info_parking.az_sosta_bici_nr_liberi" :min="min" :max="max" :step="step" class="mb-2 mt-0">
-						</b-form-input>
-						<b-description class="font-weight-light"> Inserisci il numero di parcheggi liberi per bici tradizionali</b-description>
-					</b-form>
-					<br>
-					<b-form
-						label="Posti Prenotabili"
-						description="Inserisci il numero di parcheggi prenotabili per bici tradizionali">
-						<b-label for="input-form-bici-prenotabili" class="mt-3">Posti Prenotabili:</b-label>
-						<b-form-input id="input-form-bici-prenotabili" type="number" v-model="office_survey.info_parking.az_sosta_bici_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0">
-						</b-form-input>  
-						<b-description class="font-weight-light"> Inserisci il numero di parcheggi prenotabili per bici tradizionali</b-description>
-					</b-form>
-					<br>
-					<b-form
-						label="Posti per Bici Elettriche"
-						description="Inserisci il numero di parcheggi prenotabili per bici elettriche">
-						<b-label for="input-form-bici-elettriche" class="mt-3">Posti per Bici Elettriche:</b-label>
-						<b-form-input id="input-form-bici-elettriche" type="number" v-model="office_survey.info_parking.az_sosta_bici_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0">
-						</b-form-input>
-						<b-description class="font-weight-light"> Inserisci il numero di parcheggi prenotabili per bici elettriche</b-description>
-					</b-form>
-					</b-tab>
-					<b-tab title="Moto" >
-					<b-form
-						label="Posti per Moto liberi"
-						description="Inserisci il numero di parcheggi prenotabili per moto elettriche"></b-form>
-						<b-label for="input-form-moto-liberi" class="mt-3">Posti Liberi:</b-label>
-						<b-form-input id="input-form-moto-liberi" type="number" v-model="office_survey.info_parking.az_sosta_moto_nr_liberi" :min="min" :max="max" :step="step" class="mb-2 mt-0">
-						</b-form-input>
-						<b-description class="font-weight-light"> Inserisci il numero di parcheggi liberi per moto tradizionali</b-description>
-					<br>
-					</b-form>
-					<br>
-					<b-form>
-						<b-label for="input-form-moto-prenotabili" class="mt-3">Posti Prenotabili:</b-label>
-						<b-form-input id="input-form-moto-prenotabili" type="number" v-model="office_survey.info_parking.az_sosta_moto_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0">
-						</b-form-input>
-						<b-description class="font-weight-light"> Inserisci il numero di parcheggi prenotabili per moto tradizionali</b-description>
-					</b-form>
-					<br>
-					<b-form>
-						<b-label for="input-form-moto-elettriche" class="mt-3">Posti per Moto Elettriche:</b-label>
-						<b-form-input id="input-form-moto-elettriche" type="number" v-model="office_survey.info_parking.az_sosta_moto_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0">
-						</b-form-input>
-						<b-description class="font-weight-light"> Inserisci il numero di parcheggi prenotabili per moto elettriche</b-description>
-					</b-form>
-					</b-tab>
-				</b-tabs>
-				<b-button
-				@click="submit"
-				role="button" 
-				variant="primary"
-				class="mt-2">Salva</b-button>
-			
-		</b-modal>
-	</div>
-    <br>
+				
 
 	<div class="d-flex justify-content-center" v-if="office_survey.survey!=null">
 		<b-button v-b-toggle.collapse-1 variant="primary" 
@@ -177,125 +63,397 @@
 	<div class="d-flex justify-content-center" v-if="office_survey.survey==null">
 		<h4 class="card-text">Il questionario sede è vuoto</h4>
 	</div>
-<div v-if="office_survey.survey!=null">
+<div v-if="office_survey.survey!=null" >
 	<b-collapse id="collapse-1" class="mt-2">
-    <b-card v-if="office_survey.survey.az_sosta=='sì'">
-		<b-button v-b-modal.modal-1 variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button>
-      <h4 class="card-text">Auto Parking Managment</h4>
-	  <p> Prenotabili: {{ office_survey.survey.az_sosta_auto_nr }}</p>
-	  <p>Liberi: 0</p>
-	  <p v-if="office_survey.survey.az_sosta_visitatori=='sì'"> Prenotabili (visitatori/fornitori): {{ office_survey.survey.az_sosta_visitatori_nr }}</p>
-	  <p v-if="office_survey.survey.az_sosta_visitatori=='sì'">Liberi (visitatori/fornitori): 0</p>
-	  <h4>Carpool Parking Managment</h4>
-	  	<p v-if="office_survey.survey.az_sosta_carpooling=='sì'"> Prenotabili:  {{ office_survey.survey.az_sosta_carpooling_nr }}</p>
-		<p v-if="office_survey.survey.az_sosta_carpooling=='sì'"> Liberi: 0</p>
-		<p v-if="office_survey.survey.az_sosta_carpooling=='no'" class="card-text">Non ci sono posteggi per Carpool Parking</p>
+	<b-card>
+    <b-container class="bv-example-row" v-if="office_survey.survey.az_sosta=='sì'">
+	<!-- <b-button v-b-modal.modal-1 variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button>  -->
+	<b-row>
+		<b-col>
+			<h4 class="card-text">Auto Parking Managment</h4>
+	  		<b-form
+		  	 label="Posti Liberi"
+		  	 description="Inserisci il numero di parcheggi liberi per auto tradizionali">
+			<b-label for="input-form-auto-liberi-p">Posti Liberi</b-label>
+			<b-form-input id="input-form-auto-liberi-p" type="number" v-model=" office_survey.survey.az_sosta_auto_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0">
+			</b-form-input>
+			<b-description class="font-weight-light"> Inserisci il numero di parcheggi liberi per auto tradizionali</b-description>
+	 		</b-form>
+		</b-col>
+		<b-col>
+			<h4 class="card-text">Auto Parking Managment Futuro</h4>
+	  		<b-form
+		  		label="Posti Liberi"
+				description="Inserisci il numero di parcheggi liberi per auto tradizionali">
+				<b-label for="input-form-auto-liberi-f">Posti Liberi Futuro</b-label>
+				<b-form-input id="input-form-auto-liberi-f" type="number" v-model=" office_survey.info_parking.az_sosta_auto_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0">
+				</b-form-input>
+				<b-description class="font-weight-light"> Inserisci il numero di parcheggi liberi per auto tradizionali</b-description>
+	 		</b-form>
+		</b-col>
+	</b-row> 
+	<br>
+	<b-row>
+		<b-col>
+			<b-form
+	   			label="Posti Prenotabili"
+	   			descripzione="Inserisci il numero di parcheggi prenotabili per auto tradizionali">
+				<b-label for="input-form-auto-prenotabili-p" > Posti Prenotabili</b-label>
+				<b-form-input type="number" v-model="office_survey.survey.az_sosta_auto_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+				<b-description class="font-weight-light">Inserisci il numero di parcheggi prenotabili per auto tradizionali</b-description>
+			</b-form>
+		</b-col>
+		<b-col>
+			<b-form
+	   			label="Posti Prenotabili Futuro"
+	   			descripzione="Inserisci il numero di parcheggi prenotabili per auto tradizionali">
+				<b-label for="input-form-auto-prenotabili-f" > Posti Prenotabili Futuro</b-label>
+				<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_auto_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+				<b-description class="font-weight-light">Inserisci il numero di parcheggi prenotabili per auto tradizionali</b-description>
+			</b-form>
+		</b-col>
+	</b-row>
+	<br>
+	<b-row>
+		<b-col>
+			<b-form
+				label="Posti Liberi (Visitatori/Fornitori)"
+				descripzione="Inserisci il numero di parcheggi liberi per visitatori/Fornitori">
+				<b-label for="input-form-auto-visitatori-p"> Posti liberi per visitatori o fornitiri</b-label>
+				<b-form-input type="number" v-model="office_survey.survey.az_sosta_visitatori_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+				<b-description class="font-weight-light">Inserisci il numero di parcheggi liberi per visitatori o fornitori</b-description>
+			</b-form>
+		</b-col>
+		<b-col>
+			<b-form
+				label="Posti Liberi Futuro (Visitatori/Fornitori)"
+	   			descripzione="Inserisci il numero di parcheggi prenotabili per auto tradizionali">
+				<b-label for="input-form-auto-visitatori-prenotabili-f" > Posti liberi per visitatori o fornitiri in futuro</b-label>
+				<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_visitatori_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+				<b-description class="font-weight-light">Inserisci il numero di parcheggi liberi per visitatori e fornitori in futuro</b-description>
+			</b-form>
+		</b-col>
+	</b-row>
+	<br>
+	<b-row>
+		<b-col>
+			<b-form
+	   			label="Posti Prenotabili (Visitatori/Fornitori)"
+	   			descripzione="Inserisci il numero di parcheggi prenotabili per visitatori/Fornitori">
+				<b-label for="input-form-auto-visitatori-prenotabili-p"> Posti prenotabili per visitatori o fornitiri</b-label>
+				<b-form-input type="number" v-model="office_survey.survey.az_sosta_visitatori_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+				<b-description class="font-weight-light">Inserisci il numero di parcheggi prenotabili per visitatori o fornitori</b-description>
+			</b-form>
+		</b-col>
+		<b-col>
+			<b-form
+				label="Posti Prenotabilo Futuro (Visitatori/Fornitori)"
+	   			descripzione="Inserisci il numero di parcheggi prenotabili per auto tradizionali">
+				<b-label for="input-form-auto-visitatori-prenotabili-f" > Posti prenotabili per visitatori o fornitiri in futuro</b-label>
+				<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_visitatori_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+				<b-description class="font-weight-light">Inserisci il numero di parcheggi prenotabili per visitatori e fornitori in futuro</b-description>
+			</b-form>
+		</b-col>
+	</b-row>
+	<br>
+	<b-row>
+		<b-col>
+			<h4>Carpool Parking Managment</h4>
+	  		<b-form
+	  			label="Posti Liberi"
+	  			descripzione="Inserisci il numero di parcheggi liberi per Carpooling">
+				<b-label for="input-form-auto-carpooling-liberi-p"> Posti liberi per carpooling</b-label>
+				<b-form-input type="number" v-model=" office_survey.survey.az_sosta_carpooling_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+				<b-description class="font-weight-light">Inserisci il numero di parcheggi liberi per carpooling</b-description>
+			</b-form>
+		</b-col>
+		<b-col>
+			<h4>Carpool Parking Managment Futuro</h4>
+	  		<b-form
+	  			label="Posti Liberi Futuro"
+	  			descripzione="Inserisci il numero di parcheggi liberi per Carpooling">
+				<b-label for="input-form-auto-carpooling-liberi-f"> Posti liberi per carpooling in futuro</b-label>
+				<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_carpooling_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+				<b-description class="font-weight-light">Inserisci il numero di parcheggi liberi per carpooling</b-description>
+			</b-form>
+		</b-col>
+	</b-row>
+<br>
+	<b-row>
+		<b-col>
+			<b-form
+	   			label="Posti Prenotabili"
+	   			descripzione="Inserisci il numero di parcheggi prenotabili per carpooling">
+				<b-label for="input-form-auto-carpooling-prenotabili-p"> Posti prenotabili per carpooling</b-label>
+				<b-form-input type="number" v-model=" office_survey.survey.az_sosta_carpooling_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+				<b-description class="font-weight-light">Inserisci il numero di parcheggi prenotabili per carpooling</b-description>
+			</b-form>
+		</b-col>
+		<b-col>
+	  		<b-form
+	  			label="Posti Prenotabili Futuro"
+	  			descripzione="Inserisci il numero di parcheggi prenotabili per Carpooling">
+				<b-label for="input-form-auto-carpooling-prenotabili-f"> Posti prenotabili per carpooling in futuro</b-label>
+				<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_carpooling_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+				<b-description class="font-weight-light">Inserisci il numero di parcheggi prenotabili per carpooling</b-description>
+			</b-form>
+		</b-col>
+	</b-row>
+	<b-row>
+		<b-col>
+			<h4>Auto-Elettriche Parking Managment</h4>
+	  		<b-form
+	  			label="Posti Liberi"
+	  			descripzione="Inserisci il numero di parcheggi liberi per Auto-Elettriche">
+				<b-label for="input-form-auto-elettriche-liberi-p"> Posti liberi per Auto-Elettriche</b-label>
+				<b-form-input type="number" v-model="office_survey.survey.az_sosta_auto_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+				<b-description class="font-weight-light">Inserisci il numero di parcheggi liberi per auto-elettriche</b-description>
+			</b-form>
+		</b-col>
+		<b-col>
+			<h4>Auto-Elettriche Parking Managment Futuro</h4>
+	  		<b-form
+	  			label="Posti Liberi Futuro"
+	  			descripzione="Inserisci il numero di parcheggi liberi per Auto-Elettriche">
+				<b-label for="input-form-auto-elettriche-liberi-f"> Posti liberi per auto-elettriche in futuro</b-label>
+				<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_auto_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+				<b-description class="font-weight-light">Inserisci il numero di parcheggi liberi per auto-elettriche</b-description>
+			</b-form>
+		</b-col>
+	</b-row>
+<br>
+	<b-row>
+		<b-col>
+			<b-form
+	   			label="Posti Prenotabili"
+	   			descripzione="Inserisci il numero di parcheggi prenotabili per auto-elettriche">
+				<b-label for="input-form-auto-elettiche-prenotabili-p"> Posti prenotabili per auto-elettriche</b-label>
+				<b-form-input type="number" v-model="office_survey.survey.az_sosta_auto_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+				<b-description class="font-weight-light">Inserisci il numero di parcheggi prenotabili per auto-elettriche</b-description>
+			</b-form>
+		</b-col>
+		<b-col>
+	  		<b-form
+	  			label="Posti Prenotabili Futuro"
+	  			descripzione="Inserisci il numero di parcheggi prenotabili per auto-elettriche">
+				<b-label for="input-form-auto-elettriche-prenotabili-f"> Posti prenotabili per auto-elettriche in futuro</b-label>
+				<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_auto_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+				<b-description class="font-weight-light">Inserisci il numero di parcheggi prenotabili per auto-elettriche</b-description>
+			</b-form>
+		</b-col>
+	</b-row>
+</b-container>
+<br>
+		<b-button
+            @click="updateSurvey(false)"
+            type="button"
+            variant="primary"
+            class="float-right">Salva
+		</b-button>
+</b-card>
+</b-collapse>
 
-      <b-button v-b-toggle.Futuro_Auto_Managment size="sm">Futuro</b-button>
-      <b-collapse id="Futuro_Auto_Managment" class="mt-2">
-        <b-card v-if="office_survey.info_parking.az_sosta_auto_nr!=0">
-			<h4 class="card-text">Auto Parking Managment</h4>
-	  		<p> Prenotabili: {{ office_survey.info_parking.az_sosta_auto_nr }}</p>
-	 		<p>Liberi: {{ office_survey.info_parking.az_sosta_auto_nr_liberi }}</p>
-			<p>Posti per Carpoll: {{office_survey.info_parking.az_sosta_carpooling_nr}}</p>
-			<p>Posti per auto Elettriche: {{office_survey.info_parking.az_sosta_auto_el_nr}}</p>
-			<p>Posti per Visitatori/Fornitori: {{office_survey.info_parking.az_sosta_visitatori_nr}}</p>
-		</b-card>
-		<b-card v-else>
-			<h4>Perfavore aggiungere informazione</h4>
-		</b-card>
-      </b-collapse>
-    </b-card>
-	<b-card v-if="office_survey.survey.az_sosta=='no'">
-		<h4 class="card-text">Non ci sono posteggi per Auto Parking</h4>
-		<b-button v-b-toggle.auto_parking size="sm">Futuro</b-button>
-      <b-collapse id="auto_parking" class="mt-2">
-        <b-card v-if="office_survey.info_parking.az_sosta_auto_nr!=0">
-			<h4 class="card-text">Auto Parking Managment</h4>
-	  		<p> Prenotabili: {{ office_survey.info_parking.az_sosta_auto_nr }}</p>
-	 		<p>Liberi: {{ office_survey.info_parking.az_sosta_auto_nr_liberi }}</p>
-			<p>Posti per Carpoll: {{office_survey.info_parking.az_sosta_carpooling_nr}}</p>
-			<p>Posti per auto Elettriche: {{office_survey.info_parking.az_sosta_auto_el_nr}}</p>
-			<p>Posti per Visitatori/Fornitori: {{office_survey.info_parking.az_sosta_visitatori_nr}}</p>
-		</b-card>
-		<b-card v-else>
-			<h4>Perfavore aggiungere informazione</h4>
-		</b-card>
-      </b-collapse>
-	</b-card>
-  </b-collapse>
  <b-collapse id="collapse-2" class="mt-2">
-    <b-card v-if="office_survey.survey.az_sosta_bici=='sì'">
-		<b-button variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button>
-      <h4 class="card-text">Bicicletta Parking Managment</h4>
-	  	<p> Prenotabili:  {{ office_survey.survey.az_sosta_bici_nr }}</p>
-		<p> Liberi: 0</p>
-		<p> Prenotabili (eletriche):  {{ office_survey.survey.az_sosta_bici_el_nr }}</p>
-		<p> Liberi: </p>
-		<b-button v-b-toggle.futuro_bici size="sm">Futuro</b-button>
-      <b-collapse id="futuro_bici" class="mt-2">
-        <b-card v-if="office_survey.info_parking.az_sosta_bici_nr!=0">
-			<h4 class="card-text">Bicicletta Parking Managment</h4>
-	  		<p>Prenotabili: {{ office_survey.info_parking.az_sosta_bici_nr }}</p>
-	 		<p>Liberi: {{ office_survey.info_parking.az_sosta_bici_nr_liberi }}</p>
-			<p>Posti per bici Elettriche: {{office_survey.info_parking.az_sosta_bici_el_nr}}</p>
-		</b-card>
-		<b-card v-else>
-			<h4>Perfavore aggiungere informazione</h4>
-		</b-card>
-      </b-collapse>
-    </b-card>
-	<b-card v-if="office_survey.survey.az_sosta_bici=='no'">
-		<h4 class="card-text">Non ci sono posteggi per Bicicletta Parking</h4>
-		<b-button v-b-toggle.futuro_bici_2 size="sm">Futuro</b-button>
-      <b-collapse id="futuro_bici_2" class="mt-2">
-        <b-card v-if="office_survey.info_parking.az_sosta_bici_nr!=0">
-			<h4 class="card-text">Bicicletta Parking Managment</h4>
-	  		<p>Prenotabili: {{ office_survey.info_parking.az_sosta_bici_nr }}</p>
-	 		<p>Liberi: {{ office_survey.info_parking.az_sosta_bici_nr_liberi }}</p>
-			<p>Posti per bici Elettriche: {{office_survey.info_parking.az_sosta_bici_el_nr}}</p>
-		</b-card>
-		<b-card v-else>
-			<h4>Perfavore aggiungere informazione</h4>
-		</b-card>
-      </b-collapse>
+    <b-card>
+		<!-- <b-button variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button> -->
+		<b-container>
+			<b-row>
+				<b-col>
+					<h4 class="card-text">Bicicletta Parking Managment</h4>
+	  				<b-form
+	  					label="Posti Liberi Bici"
+	  					descripzione="Inserisci il numero di parcheggi liberi per Bici">
+						<b-label for="input-form-bici-liberi-p"> Posti liberi per Bicicletta</b-label>
+						<b-form-input type="number" v-model="office_survey.survey.az_sosta_bici_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+						<b-description class="font-weight-light">Inserisci il numero di parcheggi liberi per bicicletta</b-description>
+					</b-form>
+				</b-col>
+				<b-col>
+					<h4 class="card-text">Bicicletta Parking Managment Futuro</h4>
+	  				<b-form
+	  					label="Posti Liberi Bici Futuro"
+	  					descripzione="Inserisci il numero di parcheggi liberi per Bici in futuro">
+						<b-label for="input-form-bici-liberi-f"> Posti liberi per Bicicletta in futuro</b-label>
+						<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_bici_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+						<b-description class="font-weight-light">Inserisci il numero di parcheggi liberi per bicicletta in futuro</b-description>
+					</b-form>
+				</b-col>
+			</b-row>
+			<br>
+			<b-row>
+				<b-col>
+	  				<b-form
+	  					label="Posti Prenotabili Bici"
+	  					descripzione="Inserisci il numero di parcheggi prenotabili per Bici">
+						<b-label for="input-form-bici-prenotabili-p"> Posti Prenotabili per Bicicletta </b-label>
+						<b-form-input type="number" v-model="office_survey.survey.az_sosta_bici_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+						<b-description class="font-weight-light">Inserisci il numero di parcheggi prenotabili per bicicletta</b-description>
+					</b-form>
+				</b-col>
+				<b-col>
+	  				<b-form
+	  					label="Posti Prenotabili Bici Futuro"
+	  					descripzione="Inserisci il numero di parcheggi prenotabili per Bici in Futuro">
+						<b-label for="input-form-bici-prenotabili-f"> Posti Prenotabili per Bicicletta in Futuro</b-label>
+						<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_bici_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+						<b-description class="font-weight-light">Inserisci il numero di parcheggi prenotabili per bicicletta in futuro</b-description>
+					</b-form>
+				</b-col>
+			</b-row>
+			<br>
+			<b-row>
+				<b-col>
+					<h4>Bici-Elettriche Parking Managment</h4>
+	  				<b-form
+	  					label="Posti Liberi"
+	  					descripzione="Inserisci il numero di parcheggi liberi per Bici-Elettriche">
+						<b-label for="input-form-bici-elettriche-liberi-p"> Posti liberi per bici-elettriche</b-label>
+						<b-form-input type="number" v-model="office_survey.survey.az_sosta_bici_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+						<b-description class="font-weight-light">Inserisci il numero di parcheggi liberi per bici-elettriche</b-description>
+					</b-form>
+				</b-col>
+				<b-col>
+					<h4>Bici-Elettriche Parking Managment Futuro</h4>
+	  				<b-form
+	  					label="Posti Liberi Futuro"
+	  					descripzione="Inserisci il numero di parcheggi liberi per Bici-Elettriche">
+						<b-label for="input-form-bici-elettriche-liberi-f"> Posti liberi per bici-elettriche in futuro</b-label>
+						<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_bici_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+						<b-description class="font-weight-light">Inserisci il numero di parcheggi liberi per bici-elettriche</b-description>
+					</b-form>
+				</b-col>
+			</b-row>
+			<br>
+			<b-row>
+				<b-col>
+					<b-form
+	   					label="Posti Prenotabili"
+	   					descripzione="Inserisci il numero di parcheggi prenotabili per bici-elettriche">
+						<b-label for="input-form-bici-elettiche-prenotabili-p"> Posti prenotabili per bici-elettriche</b-label>
+						<b-form-input type="number" v-model="office_survey.survey.az_sosta_bici_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+						<b-description class="font-weight-light">Inserisci il numero di parcheggi prenotabili per bici-elettriche</b-description>
+					</b-form>
+				</b-col>
+				<b-col>
+	  				<b-form
+	  					label="Posti Prenotabili Futuro"
+	  					descripzione="Inserisci il numero di parcheggi prenotabili per bici-elettriche">
+						<b-label for="input-form-bici-elettriche-prenotabili-f"> Posti prenotabili per bici-elettriche in futuro</b-label>
+						<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_bici_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+						<b-description class="font-weight-light">Inserisci il numero di parcheggi prenotabili per bici-elettriche</b-description>
+					</b-form>
+				</b-col>
+			</b-row>
+			<br>
+			<b-button
+            @click="updateSurvey(false)"
+            type="button"
+            variant="primary"
+            class="float-right">Salva</b-button>
+		</b-container>
 	</b-card>
-  </b-collapse>
-  <b-collapse id="collapse-3" class="mt-2">
-    <b-card v-if="office_survey.survey.az_sosta_carpooling=='sì'">
-		<b-button variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button>
-      <h4 class="card-text">Moto Parking Managment</h4>
-		<p> Prenotabili:  {{ office_survey.survey.az_sosta_moto_nr }}</p>
-		<p> Liberi: 0</p>
-      <b-button v-b-toggle.moto_parking_f size="sm">Futuro</b-button>
-      <b-collapse id="moto_parking_f" class="mt-2">
-        <b-card v-if="office_survey.info_parking.az_sosta_moto_nr!=0">
-			<h4 class="card-text">Moto Parking Managment</h4>
-	  		<p>Prenotabili: {{ office_survey.info_parking.az_sosta_moto_nr }}</p>
-	 		<p>Liberi: {{ office_survey.info_parking.az_sosta_moto_nr_liberi }}</p>
-			<p>Posti per moto Elettriche: {{office_survey.info_parking.az_sosta_moto_el_nr}}</p>
-		</b-card>
-		<b-card v-else>
-			<h4>Perfavore aggiungere informazione</h4>
-		</b-card>
-      </b-collapse>
+</b-collapse>
+
+<b-collapse id="collapse-3" class="mt-2">
+    <b-card>
+		<!-- <b-button variant="outline-primary" class="btn btn-primary float-right">Prenotazione</b-button> -->
+		<b-container>
+			<b-row>
+				<b-col>
+					<h4>Parking Managment Moto</h4>
+					<b-form
+	  					label="Posti Liberi"
+	  					descripzione="Inserisci il numero di parcheggi liberi per Moto">
+						<b-label for="input-form-moto-liberi-p"> Posti liberi per moto</b-label>
+						<b-form-input type="number" v-model="office_survey.survey.az_sosta_moto_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+						<b-description class="font-weight-light">Inserisci il numero di parcheggi liberi per moto</b-description>
+					</b-form>
+				</b-col>
+				<b-col>
+					<h4>Parking Managment Moto Futuro</h4>
+					<b-form
+	  					label="Posti Liberi futuro"
+	  					descripzione="Inserisci il numero di parcheggi liberi per Moto in futuro">
+						<b-label for="input-form-moto-liberi-f"> Posti liberi per moto in futuro</b-label>
+						<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_moto_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+						<b-description class="font-weight-light">Inserisci il numero di parcheggi liberi per moto in futuro</b-description>
+					</b-form>
+				</b-col>
+			</b-row>
+			<br>
+			<b-row>
+				<b-col>
+					<b-form
+	  					label="Posti Prenotabili"
+	  					descripzione="Inserisci il numero di parcheggi prenotabili per Moto">
+						<b-label for="input-form-moto-prentabili-p"> Posti prenotabili per moto</b-label>
+						<b-form-input type="number" v-model="office_survey.survey.az_sosta_moto_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+						<b-description class="font-weight-light">Inserisci il numero di parcheggi prenotabili per moto</b-description>
+					</b-form>
+				</b-col>
+				<b-col>
+					<b-form
+	  					label="Posti Prenotabili in Futuro"
+	  					descripzione="Inserisci il numero di parcheggi prenotabili per Moto in futuro">
+						<b-label for="input-form-moto-prenotabili-f"> Posti prenotabili per moto in futuro</b-label>
+						<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_moto_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+						<b-description class="font-weight-light">Inserisci il numero di parcheggi prenotabili per moto in futuro</b-description>
+					</b-form>
+				</b-col>
+			</b-row>
+			<b-row>
+				<b-col>
+					<h4>Parking Managment Moto-Elettriche</h4>
+					<b-form
+	  					label="Posti Liberi Moto-Elettriche"
+	  					descripzione="Inserisci il numero di parcheggi liberi per Moto-Elettriche">
+						<b-label for="input-form-moto-el-liberi-p"> Posti liberi per moto-elettriche</b-label>
+						<b-form-input type="number" v-model="office_survey.survey.az_sosta_moto_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+						<b-description class="font-weight-light">Inserisci il numero di parcheggi liberi per moto-elettriche</b-description>
+					</b-form>
+				</b-col>
+				<b-col>
+					<h4>Parking Managment Moto-Elettriche Futuro</h4>
+					<b-form
+	  					label="Posti Liberi futuro"
+	  					descripzione="Inserisci il numero di parcheggi liberi per Moto-Elettriche in futuro">
+						<b-label for="input-form-moto-el-liberi-f"> Posti liberi per moto-elettriche in futuro</b-label>
+						<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_moto_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+						<b-description class="font-weight-light">Inserisci il numero di parcheggi liberi per moto-elettriche in futuro</b-description>
+					</b-form>
+				</b-col>
+			</b-row>
+			<br>
+			<b-row>
+				<b-col>
+					<b-form
+	  					label="Posti Prenotabili"
+	  					descripzione="Inserisci il numero di parcheggi prenotabili per Moto-Elettriche">
+						<b-label for="input-form-moto-el-prenotabili-p"> Posti prenotabili per moto-elettriche</b-label>
+						<b-form-input type="number" v-model="office_survey.survey.az_sosta_moto_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+						<b-description class="font-weight-light">Inserisci il numero di parcheggi prenotabili per moto-elettriche</b-description>
+					</b-form>
+				</b-col>
+				<b-col>
+					<b-form
+	  					label="Posti Prenotabili in Futuro"
+	  					descripzione="Inserisci il numero di parcheggi prenotabili per Moto-Elettriche in futuro">
+						<b-label for="input-form-moto-el-prenotabili-f"> Posti prenotabili per moto-elettriche in futuro</b-label>
+						<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_moto_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+						<b-description class="font-weight-light">Inserisci il numero di parcheggi prenotabili per moto-elettriche in futuro</b-description>
+					</b-form>
+				</b-col>
+			</b-row>
+			<br>
+			<b-button
+            @click="updateSurvey(false)"
+            type="button"
+            variant="primary"
+            class="float-right">Salva</b-button>
+		</b-container>
+		
     </b-card>
-	<b-card v-if="office_survey.survey.az_sosta_moto=='no'">
-		<h4 class="card-text">Non ci sono posteggi per Moto Parking</h4>
-		<b-button v-b-toggle.moto_parking size="sm">Futuro</b-button>
-      <b-collapse id="moto_parking" class="mt-2">
-        <b-card v-if="office_survey.info_parking.az_sosta_moto_nr!=0">
-			<h4 class="card-text">Parking Managment Moto</h4>
-	  		<p>Prenotabili: {{ office_survey.info_parking.az_sosta_moto_nr }}</p>
-	 		<p>Liberi: {{ office_survey.info_parking.az_sosta_moto_nr_liberi }}</p>
-			<p>Posti per Moto Elettriche: {{office_survey.info_parking.az_sosta_moto_el_nr}}</p>
-		</b-card>
-		<b-card v-else>
-			<h4>Perfavore aggiungere informazione</h4>
-		</b-card>
-      </b-collapse>
-    </b-card>
-  </b-collapse>
+</b-collapse>
 
 </div>
 <div v-if="office_survey.survey!=null">
