@@ -679,16 +679,16 @@ export default {
 		if(this.office_survey.info_parking == null){
 				this.office_survey.info_parking={
 					az_sosta_auto_nr:0,
-					az_sosta_auto_nr_liberi:0,
+					az_sosta_auto_nr_prenotabili:0,
 					az_sosta_carpooling:0, 
 					az_sosta_auto_el_nr:0, 
 					az_sosta_visitatori:0, 
 					az_sosta_bici_nr:0, 
-					az_sosta_bici_nr_liberi:0, 
+					az_sosta_bici_nr_prenotabili:0, 
 					az_sosta_bici_el_nr:0, 
 					az_sosta_moto_nr:0, 
 					az_sosta_moto_el_nr:0,
-					az_sosta_moto_nr_liberi:0,
+					az_sosta_moto_nr_prenotabili:0,
 					
 				};}
 		this.loading = true;
