@@ -200,14 +200,14 @@
 						<b-form-group
 							label="Posti prenotabili per auto-elettriche attuale"
 							description="Inserisci il numero di parcheggi prenotabili per auto-elettriche">
-							<b-form-input type="number" v-model="office_survey.survey.az_sosta_auto_el_nr_prenotabi" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.survey.az_sosta_auto_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
 						</b-form-group>
 					</b-col>
 					<b-col>
 						<b-form-group
 							label="Posti prenotabili per auto-elettriche in futuro"
 							description="Inserisci il numero di parcheggi prenotabili per auto-elettriche">
-							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_auto_el_nr_prenotabi" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_auto_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
 						</b-form-group>
 					</b-col>
 				</b-row>
@@ -454,19 +454,40 @@ export default {
 			office_survey:{
 				survey:{
 					az_sosta_auto_nr:0,
+					az_sosta_auto_nr_prenotabili:0,
+					az_sosta_visitatori_nr:0,
+					az_sosta_visitatori_nr_prenotabili:0, 
+					az_sosta_carpooling_nr:0, 
+					az_sosta_carpooling_nr_prenotabili:0,
+					az_sosta_auto_el_nr:0, 
+					az_sosta_auto_el_nr_prenotabili:0,
+					az_sosta_bici_nr:0,
+					az_sosta_bici_nr_prenotabili:0, 
+					az_sosta_bici_el_nr:0,  
+					az_sosta_bici_el_nr_prenotabili:0,
+					az_sosta_moto_nr:0, 
+					az_sosta_moto_el_nr:0,
+					az_sosta_moto_el_nr_prenotabili:0,
+					az_sosta_moto_nr_prenotabili:0,
 				},
 				info_parking:{
 					az_sosta_auto_nr:0,
 					az_sosta_auto_nr_prenotabili:0,
-					az_sosta_carpooling:0, 
+					az_sosta_visitatori_nr:0,
+					az_sosta_visitatori_nr_prenotabili:0, 
+					az_sosta_carpooling_nr:0, 
+					az_sosta_carpooling_nr_prenotabili:0,
 					az_sosta_auto_el_nr:0, 
-					az_sosta_visitatori:0, 
-					az_sosta_bici_nr:0, 
+					az_sosta_auto_el_nr_prenotabili:0,
+					az_sosta_bici_nr:0,
 					az_sosta_bici_nr_prenotabili:0, 
-					az_sosta_bici_el_nr:0, 
+					az_sosta_bici_el_nr:0,  
+					az_sosta_bici_el_nr_prenotabili:0,
 					az_sosta_moto_nr:0, 
 					az_sosta_moto_el_nr:0,
+					az_sosta_moto_el_nr_prenotabili:0,
 					az_sosta_moto_nr_prenotabili:0,
+					
 					
 				},
 				carpooling_check:false,
@@ -531,14 +552,19 @@ export default {
 				this.office_survey.info_parking={
 					az_sosta_auto_nr:0,
 					az_sosta_auto_nr_prenotabili:0,
-					az_sosta_carpooling:0, 
+					az_sosta_visitatori_nr:0,
+					az_sosta_visitatori_nr_prenotabili:0, 
+					az_sosta_carpooling_nr:0, 
+					az_sosta_carpooling_nr_prenotabili:0,
 					az_sosta_auto_el_nr:0, 
-					az_sosta_visitatori:0, 
-					az_sosta_bici_nr:0, 
+					az_sosta_auto_el_nr_prenotabili:0,
+					az_sosta_bici_nr:0,
 					az_sosta_bici_nr_prenotabili:0, 
-					az_sosta_bici_el_nr:0, 
+					az_sosta_bici_el_nr:0,  
+					az_sosta_bici_el_nr_prenotabili:0,
 					az_sosta_moto_nr:0, 
 					az_sosta_moto_el_nr:0,
+					az_sosta_moto_el_nr_prenotabili:0,
 					az_sosta_moto_nr_prenotabili:0,
 					
 				};
@@ -616,14 +642,19 @@ export default {
 				this.office_survey.info_parking={
 					az_sosta_auto_nr:0,
 					az_sosta_auto_nr_prenotabili:0,
-					az_sosta_carpooling:0, 
+					az_sosta_visitatori_nr:0,
+					az_sosta_visitatori_nr_prenotabili:0, 
+					az_sosta_carpooling_nr:0, 
+					az_sosta_carpooling_nr_prenotabili:0,
 					az_sosta_auto_el_nr:0, 
-					az_sosta_visitatori:0, 
-					az_sosta_bici_nr:0, 
+					az_sosta_auto_el_nr_prenotabili:0,
+					az_sosta_bici_nr:0,
 					az_sosta_bici_nr_prenotabili:0, 
-					az_sosta_bici_el_nr:0, 
+					az_sosta_bici_el_nr:0,  
+					az_sosta_bici_el_nr_prenotabili:0,
 					az_sosta_moto_nr:0, 
 					az_sosta_moto_el_nr:0,
+					az_sosta_moto_el_nr_prenotabili:0,
 					az_sosta_moto_nr_prenotabili:0,
 					
 				};}
