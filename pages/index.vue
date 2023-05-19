@@ -75,7 +75,7 @@
 						<b-form-group
 						label="Posti ad accesso libero per auto tradizionali attuale"
 						description="Inserisci il numero di parcheggi ad accesso libero per auto tradizionali">
-						<b-form-input id="az_sosta_auto_nr_p" type="number" v-model=" office_survey.survey.az_sosta_auto_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0">
+						<b-form-input id="az_sosta_auto_nr_p" type="number" v-model=" office_survey.survey.az_sosta_auto_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0">
 						</b-form-input>
 						</b-form-group>
 					</b-col>
@@ -84,7 +84,7 @@
 						<b-form-group
 							label="Posti ad accesso libero per auto tradizionali in futuro"
 							description="Inserisci il numero di parcheggi ad accesso libero per auto tradizionali">
-							<b-form-input id="az_sosta_auto_nr_f" type="number" v-model=" office_survey.info_parking.az_sosta_auto_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0">
+							<b-form-input id="az_sosta_auto_nr_f" type="number" v-model=" office_survey.info_parking.az_sosta_auto_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0">
 							</b-form-input>
 						</b-form-group>
 					</b-col>
@@ -95,14 +95,14 @@
 						<b-form-group
 							label="Posti prenotabili per auto tradizionali attuale"
 							description="Inserisci il numero di parcheggi prenotabili per auto tradizionali">
-							<b-form-input type="number" v-model="office_survey.survey.az_sosta_auto_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.survey.az_sosta_auto_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 					<b-col>
 						<b-form-group
 							label="Posti prenotabili per auto tradizionali in futuro"
 							description="Inserisci il numero di parcheggi prenotabili per auto tradizionali">
-							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_auto_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_auto_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 				</b-row>
@@ -112,7 +112,7 @@
 						<b-form-group
 							label="Posti ad accesso libero per visitatori attuale"
 							description="Inserisci il numero di parcheggi ad accesso libero per visitatori/fornitori">
-							<b-form-input type="number" v-model="office_survey.survey.az_sosta_visitatori_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.survey.az_sosta_visitatori_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 					<b-col>
@@ -120,7 +120,7 @@
 						<b-form-group
 							label="Posti ad accesso libero per visitatori in futuro"
 							description="Inserisci il numero di parcheggi ad accesso libero per visitatori/fornitori">
-							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_visitatori_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_visitatori_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 				</b-row>
@@ -130,14 +130,14 @@
 						<b-form-group
 							label="Posti prenotabili per visitatori attuale"
 							description="Inserisci il numero di parcheggi prenotabili per visitatori/fornitori">
-							<b-form-input type="number" v-model="office_survey.survey.az_sosta_visitatori_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.survey.az_sosta_visitatori_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 					<b-col>
 						<b-form-group
 							label="Posti prenotabili per visitatori in futuro"
 							description="Inserisci il numero di parcheggi prenotabili per visitatori/fornitori">
-							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_visitatori_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_visitatori_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 				</b-row>
@@ -147,7 +147,7 @@
 						<b-form-group
 							label="Posti ad accesso libero per carpooling attuale"
 							description="Inserisci il numero di parcheggi ad accesso libero per carpooling">
-							<b-form-input type="number" v-model=" office_survey.survey.az_sosta_carpooling_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model=" office_survey.survey.az_sosta_carpooling_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 					<b-col>
@@ -155,7 +155,7 @@
 						<b-form-group
 							label="Posti ad accesso libero per carpooling in futuro"
 							description="Inserisci il numero di parcheggi ad accesso libero per carpooling">
-							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_carpooling_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_carpooling_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 				</b-row>
@@ -165,14 +165,14 @@
 						<b-form-group
 							label="Posti prenotabili per carpooling attuale"
 							description="Inserisci il numero di parcheggi prenotabili per carpooling">
-							<b-form-input type="number" v-model=" office_survey.survey.az_sosta_carpooling_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model=" office_survey.survey.az_sosta_carpooling_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 					<b-col>
 						<b-form-group
 							label="Posti prenotabili per carpooling in futuro"
 							description="Inserisci il numero di parcheggi prenotabili per carpooling">
-							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_carpooling_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_carpooling_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 				</b-row>
@@ -182,7 +182,7 @@
 						<b-form-group
 							label="Posti ad accesso libero per auto-elettriche attuale"
 							description="Inserisci il numero di parcheggi ad accesso libero per auto-elettriche">
-							<b-form-input type="number" v-model="office_survey.survey.az_sosta_auto_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.survey.az_sosta_auto_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 					<b-col>
@@ -190,7 +190,7 @@
 						<b-form-group
 							label="Posti ad accesso libero per auto-elettriche in futuro"
 							description="Inserisci il numero di parcheggi ad accesso libero per auto-elettriche">
-							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_auto_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_auto_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 				</b-row>
@@ -200,14 +200,14 @@
 						<b-form-group
 							label="Posti prenotabili per auto-elettriche attuale"
 							description="Inserisci il numero di parcheggi prenotabili per auto-elettriche">
-							<b-form-input type="number" v-model="office_survey.survey.az_sosta_auto_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.survey.az_sosta_auto_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 					<b-col>
 						<b-form-group
 							label="Posti prenotabili per auto-elettriche in futuro"
 							description="Inserisci il numero di parcheggi prenotabili per auto-elettriche">
-							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_auto_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_auto_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 				</b-row>
@@ -232,7 +232,7 @@
 						<b-form-group
 							label="Posti ad accesso libero per bici attuale"
 							description="Inserisci il numero di parcheggi ad accesso libero per bici">
-							<b-form-input type="number" v-model="office_survey.survey.az_sosta_bici_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.survey.az_sosta_bici_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 					<b-col>
@@ -240,7 +240,7 @@
 						<b-form-group
 							label="Posti ad accesso libero per bici in futuro"
 							description="Inserisci il numero di parcheggi ad accesso libero per bici">
-							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_bici_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_bici_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 				</b-row>
@@ -250,14 +250,14 @@
 						<b-form-group
 							label="Posti prenotabili per bici attuale"
 							description="Inserisci il numero di parcheggi prenotabili per bici">
-							<b-form-input type="number" v-model="office_survey.survey.az_sosta_bici_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.survey.az_sosta_bici_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 					<b-col>
 						<b-form-group
 							label="Posti prenotabili per bici in futuro"
 							description="Inserisci il numero di parcheggi prenotabili per bici">
-							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_bici_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_bici_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 				</b-row>
@@ -268,7 +268,7 @@
 						<b-form-group
 							label="Posti ad accesso libero per bici-elettriche attuale"
 							description="Inserisci il numero di parcheggi ad accesso libero per bici-elettriche">
-							<b-form-input type="number" v-model="office_survey.survey.az_sosta_bici_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.survey.az_sosta_bici_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 					<b-col>
@@ -276,7 +276,7 @@
 						<b-form-group
 							label="Posti ad accesso libero per bici-elettriche in futuro"
 							description="Inserisci il numero di parcheggi ad accesso libero per bici-elettriche">
-							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_bici_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_bici_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 				</b-row>
@@ -286,14 +286,14 @@
 						<b-form-group
 							label="Posti prenotabili per bici-elettriche attuale"
 							description="Inserisci il numero di parcheggi prenotabili per bici-elettriche">
-							<b-form-input type="number" v-model="office_survey.survey.az_sosta_bici_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.survey.az_sosta_bici_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 					<b-col>
 						<b-form-group
 							label="Posti prenotabili per bici-elettriche in futuro"
 							description="Inserisci il numero di parcheggi prenotabili per bici-elettriche">
-							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_bici_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_bici_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 				</b-row>
@@ -317,7 +317,7 @@
 						<b-form-group
 							label="Posti ad accesso libero per moto attuale"
 							description="Inserisci il numero di parcheggi ad accesso libero per moto">
-							<b-form-input type="number" v-model="office_survey.survey.az_sosta_moto_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.survey.az_sosta_moto_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 					<b-col>
@@ -325,7 +325,7 @@
 						<b-form-group
 							label="Posti ad accesso libero per moto in futuro"
 							description="Inserisci il numero di parcheggi ad accesso libero per moto">
-							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_moto_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_moto_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 				</b-row>
@@ -335,14 +335,14 @@
 						<b-form-group
 							label="Posti prenotabili per moto attuale"
 							description="Inserisci il numero di parcheggi prenotabili per moto">
-							<b-form-input type="number" v-model="office_survey.survey.az_sosta_moto_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.survey.az_sosta_moto_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 					<b-col>
 						<b-form-group
 							label="Posti prenotabili in futuro per moto in futuro"
 							description="Inserisci il numero di parcheggi prenotabili per moto">
-							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_moto_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_moto_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 				</b-row>
@@ -352,7 +352,7 @@
 						<b-form-group
 							label="Posti ad accesso libero per moto-elettriche attuale"
 							description="Inserisci il numero di parcheggi ad accesso libero per moto-elettriche">
-							<b-form-input type="number" v-model="office_survey.survey.az_sosta_moto_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.survey.az_sosta_moto_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 					<b-col>
@@ -360,7 +360,7 @@
 						<b-form-group
 							label="Posti ad accesso libero per moto-elettriche in futuro"
 							description="Inserisci il numero di parcheggi ad accesso libero per moto-elettriche">
-							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_moto_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_moto_el_nr" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 				</b-row>
@@ -370,14 +370,14 @@
 						<b-form-group
 							label="Posti prenotabili per moto-elettriche attuale"
 							description="Inserisci il numero di parcheggi prenotabili per moto-elettriche">
-							<b-form-input type="number" v-model="office_survey.survey.az_sosta_moto_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.survey.az_sosta_moto_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 					<b-col>
 						<b-form-group
 							label="Posti prenotabili per moto-elettriche in futuro"
 							description="Inserisci il numero di parcheggi prenotabili per moto-elettriche">
-							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_moto_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0"></b-form-input>
+							<b-form-input type="number" v-model="office_survey.info_parking.az_sosta_moto_el_nr_prenotabili" :min="min" :max="max" :step="step" class="mb-2 mt-0" placeholder="0"></b-form-input>
 						</b-form-group>
 					</b-col>
 				</b-row>
